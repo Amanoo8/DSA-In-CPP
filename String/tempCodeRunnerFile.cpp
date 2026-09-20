@@ -1,22 +1,26 @@
-#include <iostream>
+#include<vector>
+#include<iostream>
 using namespace std;
 int main(){
-    string n;
-    getline(cin,n);
-    int i=0,j=n.length()-1;
-    while(i<j){
-        swap(n[i++],n[j--]);
-    }
-     i=0;
-    for(int k=0;k<n.length();k++){
-        if(n[k]==' '){
-            j=k-1;
-        while(i<j){
-        swap(n[i++],n[j--]);
+ string s;
+ cin>>s;
+ int m=s.length();
+ int i=0,j=0;
+ char ans;
+ while(i<m){
+    int c=1;
+    if(i==0||s[i]!=s[i-1]){
+        j=i+1;
+        while(s[j]==s[j-1]||j==0){
+         c++;
+         j++;
+         i=j;
         }
-        i=k+1;
-        }
     }
-    cout<<n;
+    if(c==1){
+        ans=s[i];
+        break;
+    }
+ }
+ cout<<ans;
 }
-  
