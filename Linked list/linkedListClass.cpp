@@ -73,8 +73,30 @@ class Myll{
         }
         n->next=x->next;
         x->next=n;
+        size++;
     }
 
+  }
+
+  void deleteAtIndex(int i){
+    if(i==0)deleteAtHead();
+    else{
+        node*x=head;
+        for(int k=0;k<i-1;k++){
+         x=x->next;
+        }
+        x->next=x->next->next;
+        if(i==size-1)tail=x;
+        size--;
+    }
+  }
+
+  int get(int i){
+    node*x=head;
+    for(int k=0;k<i;k++){
+        x=x->next;
+    }
+    cout<<x->val<<endl;
   }
 
 };
@@ -89,7 +111,9 @@ int main(){
     list.insertAtTail(6);
     // list.deleteAtHead();
     list.addAtIndex(2,3);
+    list.deleteAtIndex(1);
     list.print();
     cout<<endl;
-    cout<<list.length();
+    cout<<list.length()<<endl;
+    list.get(2);
 }
